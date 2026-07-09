@@ -4,13 +4,22 @@ pipeline {
     stages {
         stage('Git-clone') {
             steps {
-                git 'https://github.com/2894-vaishu/java.git'
+                git 'https://github.com/Shahul123-kicha/mavenproject.git'
             }
         }
-        stage('Java-project') {
+        stage('Build') {
             steps {
-                bat '''javac Test.java
-                    java Test.java'''
+                bat 'mvn package'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+         stage('Package') {
+            steps {
+                bat 'mvn Package'
             }
         }
     }
